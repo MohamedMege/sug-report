@@ -5,7 +5,6 @@ const prefix = "$" // تقدر تغيره
 	const blow = new Set()
 	client.on('message', message => {
 
-        const sug = JSON.parse(fs.readFileSync('./sug.json' , 'utf8'));
  
         client.on('message', message => {
                    if (!message.channel.guild) return;
@@ -13,6 +12,7 @@ const prefix = "$" // تقدر تغيره
             let room = message.content.split(" ").slice(1);
             let findroom = message.guild.channels.find('name', `${room}`)
             if(message.content.startsWith(prefix + "setSug")) {
+        const sug = JSON.parse(fs.readFileSync('./sug.json' , 'utf8'));
                 if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
                 if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
         if(!room) return message.channel.send('Please Type The Channel Name')
